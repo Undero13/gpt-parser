@@ -1,6 +1,9 @@
-import test from 'node:test';
-import assert from "node:assert/strict";
-test('synchronous passing test', (t) => {
-    // This test passes because it does not throw an exception.
-    assert.strictEqual(1, 1);
+import { camelToUnderscore } from "./camelToUnderscore";
+describe("camelToUnderscore", () => {
+    test("text to lowercase", () => {
+        expect(camelToUnderscore("FirsTNamE")).toBe("firstname");
+    });
+    test("text to snakecase", () => {
+        expect(camelToUnderscore("First Name")).toBe("first_name");
+    });
 });

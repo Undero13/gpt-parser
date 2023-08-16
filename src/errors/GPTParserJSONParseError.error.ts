@@ -1,5 +1,5 @@
-export class  GPTParserJSONParseError extends Error{
-    constructor(message: string){
-        super(message)
-    }
+export class GPTParserJSONParseError extends Error {
+  constructor(message: string) {
+    super(message);
+  }
 }

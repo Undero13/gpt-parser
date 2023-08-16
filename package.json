@@ -1,9 +1,14 @@
 {
   "name": "chatgpt-parser",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "ChatGPT response JSON parser",
   "main": "dist/index.js",
   "author": "Patryk Loter",
+  "keywords": [
+    "chatgpt",
+    "gpt",
+    "node"
+  ],
   "repository": {
     "url": "https://github.com/Undero13/gpt-parser"
   },
@@ -12,7 +17,6 @@
     "build": "tsc",
     "test": "jest"
   },
-  "keywords": [],
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^29.5.3",

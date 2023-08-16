@@ -6,7 +6,7 @@ export function iterate(object) {
     while (stack?.length > 0) {
         const currentObj = stack.pop();
         const currentKeys = Object.keys(currentObj);
-        currentKeys.forEach(key => {
+        currentKeys.forEach((key) => {
             if (isObject(currentObj[key]) && !isArray(currentObj[key])) {
                 stack.push(currentObj[key]);
             }
