@@ -1,9 +1,12 @@
 {
   "name": "chatgpt-parser",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "ChatGPT response JSON parser",
   "main": "dist/index.js",
   "author": "Patryk Loter",
+  "repository": {
+    "url": "https://github.com/Undero13/gpt-parser"
+  },
   "scripts": {
     "start:dev": "ts-node ./src/index.ts",
     "build": "tsc",
