@@ -3,7 +3,16 @@
 import { iterate } from "./core/iterate/iterate";
 import { GPTParserJSONParseError, GPTParserOutputEmpty } from "./errors";
 
-export function gptParser(chatGPTOutput: string) {
+export type Options = {
+  keyCaseStyle:  "camel" | "snake" | "pascal"
+}
+
+export function gptParser(chatGPTOutput: string, options: Options = null) {
+  const defaultOptions = {
+    keyCaseStyle: "snake",
+    ...options
+  }
+
   if (!chatGPTOutput) {
     throw new GPTParserOutputEmpty("GPTOutput is empty");
   }
@@ -16,5 +25,5 @@ export function gptParser(chatGPTOutput: string) {
     throw new GPTParserJSONParseError(e.message);
   }
 
-  return iterate(parsedOutput);
+  return iterate(parsedOutput, defaultOptions);
 }

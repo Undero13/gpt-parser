@@ -1,3 +1,3 @@
 export function isObject(obj: object) {
-  return typeof obj === "object" && obj !== null;
+  return Object.prototype.toString.call(obj) === "[object Object]" && obj !== null;
 }
