@@ -1,7 +1,11 @@
 // example chatgp-output json
 import { iterate } from "./core/iterate/iterate";
 import { GPTParserJSONParseError, GPTParserOutputEmpty } from "./errors";
-export function gptParser(chatGPTOutput) {
+export function gptParser(chatGPTOutput, options = null) {
+    const defaultOptions = {
+        keyCaseStyle: "snake",
+        ...options
+    };
     if (!chatGPTOutput) {
         throw new GPTParserOutputEmpty("GPTOutput is empty");
     }
@@ -12,5 +16,5 @@ export function gptParser(chatGPTOutput) {
     catch (e) {
         throw new GPTParserJSONParseError(e.message);
     }
-    return iterate(parsedOutput);
+    return iterate(parsedOutput, defaultOptions);
 }

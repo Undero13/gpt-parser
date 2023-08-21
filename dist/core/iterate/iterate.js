@@ -1,8 +1,21 @@
 import { isObject, isArray } from "../../utils";
-import { camelToUnderscore } from "../camelToUpperscore/camelToUnderscore";
-export function iterate(object) {
+import { toCamelCase } from "../toCamelCase/toCamelCase";
+import { toPascalCase } from "../toPascalCase/toPascalCase";
+import { toSnakeCase } from "../toSnakeCase/toSnakeCase";
+export function iterate(object, options) {
     const stack = [object];
     const result = {};
+    let caseStyleFunction = null;
+    switch (options.keyCaseStyle) {
+        case "camel":
+            caseStyleFunction = toCamelCase;
+            break;
+        case "snake":
+            caseStyleFunction = toSnakeCase;
+            break;
+        case "pascal":
+            caseStyleFunction = toPascalCase;
+    }
     while (stack?.length > 0) {
         const currentObj = stack.pop();
         const currentKeys = Object.keys(currentObj);
@@ -11,10 +24,10 @@ export function iterate(object) {
                 stack.push(currentObj[key]);
             }
             else if (isArray(currentObj[key])) {
-                result[camelToUnderscore(key)] = currentObj[key].join(", ");
+                result[caseStyleFunction(key)] = currentObj[key].join(", ");
             }
             else {
-                result[camelToUnderscore(key)] = currentObj[key];
+                result[caseStyleFunction(key)] = currentObj[key];
             }
         });
     }
