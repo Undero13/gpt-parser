@@ -1,20 +1,24 @@
+"use strict";
 // example chatgp-output json
-import { iterate } from "./core/iterate/iterate";
-import { GPTParserJSONParseError, GPTParserOutputEmpty } from "./errors";
-export function gptParser(chatGPTOutput, options = null) {
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.gptParser = void 0;
+const iterate_1 = require("./core/iterate/iterate");
+const errors_1 = require("./errors");
+function gptParser(chatGPTOutput, options = null) {
     const defaultOptions = {
         keyCaseStyle: "snake",
         ...options
     };
     if (!chatGPTOutput) {
-        throw new GPTParserOutputEmpty("GPTOutput is empty");
+        throw new errors_1.GPTParserOutputEmpty("GPTOutput is empty");
     }
     let parsedOutput;
     try {
         parsedOutput = JSON.parse(chatGPTOutput);
     }
     catch (e) {
-        throw new GPTParserJSONParseError(e.message);
+        throw new errors_1.GPTParserJSONParseError(e.message);
     }
-    return iterate(parsedOutput, defaultOptions);
+    return (0, iterate_1.iterate)(parsedOutput, defaultOptions);
 }
+exports.gptParser = gptParser;

@@ -1,9 +1,10 @@
 {
   "name": "chatgpt-parser",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "ChatGPT response JSON parser",
   "main": "dist/index.js",
   "author": "Patryk Loter",
+  "types": "dist/index.d.ts",
   "keywords": [
     "chatgpt",
     "gpt",
@@ -15,7 +16,8 @@
   "scripts": {
     "start:dev": "ts-node ./src/index.ts",
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "prepublish": "tsc"
   },
   "license": "MIT",
   "devDependencies": {

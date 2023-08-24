@@ -3,8 +3,11 @@
       "experimentalDecorators": true,
       "outDir": "dist/",
       "target": "ES2022",
-      "module": "ES2022",
+      "module": "CommonJS",
       "moduleResolution": "Node",
-      "allowSyntheticDefaultImports": true
-    }
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+      "declaration": true
+    },
+    "exclude": ["**/*.spec.ts", "**/*.mock.ts"]
   }
