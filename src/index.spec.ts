@@ -14,6 +14,9 @@ const output = JSON.stringify({
     country_code: "testCode",
   },
   hobbies: ["Music", "It", "Games"],
+  test_value_active: "test",
+  testValueTest: "test",
+  TestValueValue: "test" 
 });
 
 describe("gptParser", () => {
@@ -29,6 +32,9 @@ describe("gptParser", () => {
       nick_name: "TestNickName",
       street: "TestStreet",
       test_value: true,
+      test_value_active: "test",
+      test_value_test: "test",
+      test_value_value: "test",
     });
   });
 
