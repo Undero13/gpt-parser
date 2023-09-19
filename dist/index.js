@@ -7,7 +7,8 @@ const errors_1 = require("./errors");
 function gptParser(chatGPTOutput, options = null) {
     const defaultOptions = {
         keyCaseStyle: "snake",
-        ...options
+        valueCanBeArray: false,
+        ...options,
     };
     if (!chatGPTOutput) {
         throw new errors_1.GPTParserOutputEmpty("GPTOutput is empty");

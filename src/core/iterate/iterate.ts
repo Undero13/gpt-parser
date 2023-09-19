@@ -7,9 +7,9 @@ import { toSnakeCase } from "../toSnakeCase/toSnakeCase";
 export function iterate(object: object, options: Options) {
   const stack = [object];
   const result = {};
-  let caseStyleFunction = null
+  let caseStyleFunction = null;
 
-  switch(options.keyCaseStyle) {
+  switch (options.keyCaseStyle) {
     case "camel":
       caseStyleFunction = toCamelCase;
       break;
@@ -20,7 +20,6 @@ export function iterate(object: object, options: Options) {
       caseStyleFunction = toPascalCase;
   }
 
-
   while (stack?.length > 0) {
     const currentObj = stack.pop();
     const currentKeys = Object.keys(currentObj);
@@ -29,7 +28,9 @@ export function iterate(object: object, options: Options) {
       if (isObject(currentObj[key]) && !isArray(currentObj[key])) {
         stack.push(currentObj[key]);
       } else if (isArray(currentObj[key])) {
-        result[caseStyleFunction(key)] = currentObj[key].join(", ");
+        if (options.valueCanBeArray)
+          result[caseStyleFunction(key)] = currentObj[key];
+        else result[caseStyleFunction(key)] = currentObj[key].join(", ");
       } else {
         result[caseStyleFunction(key)] = currentObj[key];
       }

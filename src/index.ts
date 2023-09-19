@@ -4,14 +4,16 @@ import { iterate } from "./core/iterate/iterate";
 import { GPTParserJSONParseError, GPTParserOutputEmpty } from "./errors";
 
 export type Options = {
-  keyCaseStyle:  "camel" | "snake" | "pascal"
-}
+  keyCaseStyle: "camel" | "snake" | "pascal";
+  valueCanBeArray?: boolean;
+};
 
 export function gptParser(chatGPTOutput: string, options: Options = null) {
   const defaultOptions = {
     keyCaseStyle: "snake",
-    ...options
-  }
+    valueCanBeArray: false,
+    ...options,
+  };
 
   if (!chatGPTOutput) {
     throw new GPTParserOutputEmpty("GPTOutput is empty");

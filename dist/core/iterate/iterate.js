@@ -27,7 +27,10 @@ function iterate(object, options) {
                 stack.push(currentObj[key]);
             }
             else if ((0, utils_1.isArray)(currentObj[key])) {
-                result[caseStyleFunction(key)] = currentObj[key].join(", ");
+                if (options.valueCanBeArray)
+                    result[caseStyleFunction(key)] = currentObj[key];
+                else
+                    result[caseStyleFunction(key)] = currentObj[key].join(", ");
             }
             else {
                 result[caseStyleFunction(key)] = currentObj[key];

@@ -5,6 +5,6 @@ function toCamelCase(key) {
     return key
         .replaceAll("_", " ")
         .replace(/(?:^.|[A-Z]|\b.)/g, (letter, index) => index == 0 ? letter.toLowerCase() : letter.toUpperCase())
-        .replace(/\s+/g, '');
+        .replace(/\s+/g, "");
 }
 exports.toCamelCase = toCamelCase;
